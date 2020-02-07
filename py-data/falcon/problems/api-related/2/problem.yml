@@ -1,0 +1,28 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: falcon
+    url: https://github.com/falconry/falcon
+fix:
+    tag: performance
+    description: Replacing generator expressions with list comp improves performance because of less function call overhead
+    commit message: >
+            perf(Request): Use a list comprehension and don't lowercase the headers
+            List comprehensions are faster than generators. Also, there is no
+            need to lowercase the header name, since headers are case-insensitive
+            after all.
+    commit: https://github.com/falconry/falcon/commit/83e8232
+induce:
+    commits:
+        https://github.com/falconry/falcon/commit/cc77200269afc26f59feaf7699e62ae06cd155c3
+location:
+    file: 
+        falcon/request.py
+    method: 
+        headers(self)
+api:
+    builtins.generator
+api change: 
+    builtins.generator generator expression -> builtins.list list comprehension
+rule:
+    list comprehension gives better performance than a generator expression

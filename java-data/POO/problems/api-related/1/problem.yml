@@ -1,0 +1,25 @@
+source:
+    name: github-search
+project: 
+    name: POO
+    url: https://github.com/alves-luis/POO
+fix:
+    tag: performance
+    description: Replacing StringBuffer with StringBuilder improves performance because it is not synced
+    commit message: >
+            Using StringBuilder instead of StringBuffer
+    commit: https://github.com/alves-luis/POO/commit/5d6fa23
+induce:
+    commits:
+        https://github.com/alves-luis/POO/commit/e120ebd23310cf6b4028937d69e5309046711460
+location:
+    file: 
+        Ficha7/Hotel.java
+    method: 
+        public String toString() 
+api: 
+    java.lang.StringBuffer
+api change:
+    java.lang.StringBuffer -> java.lang.StringBuilder
+rule:
+    if syncying is not required, use a StringBuilder instead of StringBuffer to handle strings efficiently

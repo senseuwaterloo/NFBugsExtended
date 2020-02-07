@@ -1,0 +1,22 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: XLog
+    url: https://github.com/promeG/XLog
+fix:
+    tag: performance
+    description: 
+    commit message: >
+            Merge pull request #7 from promeG/2.0
+            Speed up init process. Add support to annotated a class.
+    commit: https://github.com/promeG/XLog/pull/7/commits/73800e3
+induce:
+    commits:
+        https://github.com/promeG/XLog/pull/7/commits/bab8ea46e4763d9300988cf7924458c342cd43a2
+location:
+    file: 
+        xlog-android-idle/src/main/java/com/github/promeg/xlog_android/lib/XLogInitializer.java
+    method: 
+        final class XLogInitializer
+suggestion: 
+    

@@ -1,0 +1,21 @@
+source:
+    name: github-search
+project: 
+    name: AWS-WAF-Test
+    url: https://github.com/s2pAIr/AWS-WAF-Test
+fix:
+    tag: resource management 
+    description: Preventing data corruption by remembering to close a file when finished
+    commit message: >
+        Forgot to close the file, fixed
+    commit: https://github.com/s2pAIr/AWS-WAF-Test/commit/ad6db33
+induce:
+    commits: 
+        https://github.com/s2pAIr/AWS-WAF-Test/commit/cda72bc48ab1d8d3805c3f007c49cec49dfa1aff
+location:
+    file: aws-waf-test.py
+    method: 
+api: 
+    builtins.io.IOBase
+rule: 
+    close files when done

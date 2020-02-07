@@ -1,0 +1,32 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: selendroid
+    url: https://github.com/selendroid/selendroid
+fix:
+    tag: performance
+    description: Replacing a slower function with a faster one to reduce runtime 
+    commit message: >
+            Optimizing performance of generation random UUIDs.
+            No more usage of UUID.randomUUID() - it leads to initialization of the java.security.SecureRandom, which can be really slow.
+            Signed-off-by: Simon Stewart <simons@fb.com>
+    commit: https://github.com/selendroid/selendroid/commit/fa94483
+induce:
+    commits:
+        https://github.com/selendroid/selendroid/commit/91e795fbf49102bfe90c53e22af864f4bb8e6e3d
+        https://github.com/selendroid/selendroid/commit/acee8c743f6c252d808c36ba2f3d8b7db0e4e311
+location:
+    file: 
+        selendroid-server/src/main/java/io/selendroid/server/model/DefaultSelendroidDriver.java,
+        selendroid-server/src/main/java/io/selendroid/server/model/KnownElements.java,
+        selendroid/selendroid-standalone/src/test/java/io/selendroid/server/model/SelendroidStandaloneDriverTest.java
+    method: 
+        public String initializeSession(JSONObject desiredCapabilities),
+        public String add(AndroidElement element),
+        public void assertThatANewtestSessionCanBeCreated() throws Exception, public void assertThatANewtestSessionCanBeCreatedWithAlreadyInstalledApp()
+api:
+    java.util.UUID.randomUUID
+api change:
+     java.util.UUID.randomUUID -> java.util.Random   
+rule: 
+    generating a random uuid using random.nextLong is faster than using UUID.randomUUID

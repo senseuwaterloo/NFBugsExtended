@@ -1,0 +1,20 @@
+source:
+    name: github-search
+project: 
+    name: osmeditor4android
+    url: https://github.com/MarcusWolschon/osmeditor4android
+fix:
+    tag: memory
+    description: fix a memory leak from forgetting to unbind services
+    commit message: >
+            Fix leak of OpenStreetMapTileProvider.
+    commit: https://github.com/MarcusWolschon/osmeditor4android/commit/abbe4df
+location:
+    file: 
+        src/de/blau/android/views/util/OpenStreetMapTileProvider.java
+    method: 
+        public void clear()
+api: 
+    android.content.Context
+rule:
+    unbind service connections when finished with them

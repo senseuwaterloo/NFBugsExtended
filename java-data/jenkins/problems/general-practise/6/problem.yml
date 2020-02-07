@@ -1,0 +1,19 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: jenkins
+    url: https://github.com/jenkinsci/jenkins
+fix:
+    tag: security
+    description: Programmers improved data integrity by synchronizing a method so data is not accidentally overwritten
+    commit message: >
+        implemented a fix for the data-loss problem.
+    commit: https://github.com/jenkinsci/jenkins/commit/b46bf8b
+induce:
+    commits:
+        https://github.com/jenkinsci/jenkins/commit/6a186623c1e09fdae53d4ecfe1948c63f4df80ef
+location:
+    file: core/src/main/java/hudson/model/Descriptor.java
+    method: protected synchronized void save()
+rule:
+    use synchronized methods to avoid data corruption

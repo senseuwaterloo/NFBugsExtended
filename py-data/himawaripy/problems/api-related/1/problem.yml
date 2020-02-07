@@ -1,0 +1,23 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: himawaripy
+    url: https://github.com/boramalper/himawaripy
+fix:
+    tag: performance
+    description: improves performance by running parallel downloads
+    commit message: >
+            Merge pull request #12 from predator5047/master
+            Now downloading pictures in parallel
+    commit: https://github.com/boramalper/himawaripy/commit/3ee8726
+location:
+    file: 
+        himawaripy.py
+    method: 
+        main()
+api: 
+    builtins.forloop
+api change:
+    builtins.forloop -> multiprocessing.Pool.map
+rule:
+    performing commands in parallel using Pool object speeds up performance

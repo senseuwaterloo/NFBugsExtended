@@ -1,0 +1,20 @@
+source:
+    name: github-search
+project: 
+    name: poei-2018-cgi-base-spring
+    url: https://github.com/jponcy/poei-2018-cgi-base-spring
+fix:
+    tag: security
+    description: enhance security by making password characters WRITE_ONLY, so others cannot view passwords
+    commit message: >
+            Hide password
+    commit: https://github.com/jponcy/poei-2018-cgi-base-spring/commit/8c66187
+location:
+    file: 
+        src/main/java/hello/entity/User.java
+    method: 
+        - in public class User
+api:
+    com.fasterxml.jackson.annotation.JsonProperty.Access
+rule: 
+    to improve security, conceal user password fields using WRITE_ONLY access

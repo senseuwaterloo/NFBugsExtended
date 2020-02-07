@@ -1,0 +1,30 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: elasticsearch
+    url: https://github.com/elastic/elasticsearch
+fix:
+    tag: performance
+    description: Replacing StringBuffer with StringBuilder improves performance because it is not synced
+    commit message: >
+            Replaces usage of `StringBuffer` with `StringBuilder` and fixes stray
+            single quote in the same `PluginInfo#toString()` method.
+            Closes #5605
+    commit: https://github.com/elastic/elasticsearch/commit/70c089d
+induce:
+    commits:
+        https://github.com/elastic/elasticsearch/commit/4ff1b429f1351c17ae5f3a4338a7ac33db49ef70
+        https://github.com/elastic/elasticsearch/commit/abf9a866788b2fab855b50728670e2aa2dd42c5a
+location:
+    file: 
+        src/main/java/org/elasticsearch/action/admin/cluster/node/info/PluginInfo.java
+        src/test/java/org/elasticsearch/stresstest/fullrestart/FullRestartStressTest.java
+    method: 
+        public String toString()
+        public void run() throws Exception
+api: 
+    java.lang.StringBuffer
+api change:
+    java.lang.StringBuffer -> java.lang.StringBuilder
+rule:
+    if syncying is not required, use a StringBuilder instead of StringBuffer to handle strings efficiently

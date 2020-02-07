@@ -1,0 +1,25 @@
+source:
+    name: github-search
+project: 
+    name: dbmaintain
+    url: https://github.com/DbMaintain/dbmaintain
+fix:
+    tag: performance
+    description: Replacing "+" with StringBuilder improves performance and memory space
+    commit message: >
+            Use a StringBuilder instead of concatenation in a loop
+    commit: https://github.com/DbMaintain/dbmaintain/commit/4974e9c
+induce:
+    commits:
+        https://github.com/DbMaintain/dbmaintain/commit/36958055c7b167ee4d7896c983201f5f58cf7780
+location:
+    file: 
+        dbmaintain/src/main/java/org/dbmaintain/config/ConfigUtils.java
+    method: 
+        private static String getConfiguredClassName(Class<?> type, Properties configuration, String propertyName, String... implementationDiscriminatorValues)
+api: 
+    java.lang.String
+api change:
+    java.lang.String.+ -> java.lang.StringBuilder.append
+rule:
+    use a StringBuilder instead of adding strings to concatenate efficiently

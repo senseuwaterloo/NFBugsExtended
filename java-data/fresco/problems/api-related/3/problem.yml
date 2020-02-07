@@ -1,0 +1,33 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: fresco
+    url: https://github.com/facebook/fresco
+fix:
+    tag: memory, performance
+    description: initialized hashmaps and hashsets with capacity to avoid resizing
+    commit message: >
+            ImmutableMap and ImmutableList: initialize with known capacity
+            Summary:
+            The final capacity of these `HashMap` and `HashSet` is known at creation time. By providing the capacity parameter we avoid resizing them (and potentially save some memory).
+            The default `HashMap#MINIMUM_CAPACITY = 4` and the `HashSet` is backed by a `HashMap`
+            Reviewed By: erikandre
+            Differential Revision: D6123899
+            fbshipit-source-id: 29dcf418a14213e3ed8eb0bfcad7c5ae48fd7b58
+    commit: https://github.com/facebook/fresco/commit/fbd926f
+induce:
+    commits:
+        https://github.com/facebook/fresco/commit/f8e9ba7e22a06ca1128adc4cb40efe605399919c
+        https://github.com/facebook/fresco/commit/8b81a481d37834ba0b5b203ed5441e4d97fbe8b2
+location:
+    file: 
+        fbcore/src/main/java/com/facebook/common/internal/ImmutableMap.java
+        fbcore/src/main/java/com/facebook/common/internal/ImmutableSet.java
+    method: 
+        public static <K, V> Map<K, V> of(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5, K k6, V v6)
+        public static <E> ImmutableSet<E> of(E... elements)
+api:
+    java.util.HashMap
+    java.util.HashSet
+rule:
+     initialize HashMaps and HashSets with the desired size if it is known

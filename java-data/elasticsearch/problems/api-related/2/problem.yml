@@ -1,0 +1,40 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: elasticsearch
+    url: https://github.com/elastic/elasticsearch
+fix:
+    tag: performance
+    description: Replacing "+" with StringBuilder improves performance and memory space
+    commit message: >
+            Use StringBuilder to construct a String instead of relying on appending where possible (#24753)
+            This PR revolves around places in the code where introducing a StringBuilder might make the construction
+            of a String easier to follow and also, maybe avoid a case where the compiler's very safe way of introducing 
+            StringBuilder instead of String might not always be optimal for performance.
+    commit: https://github.com/elastic/elasticsearch/commit/905eb42
+induce:
+    commits:
+        https://github.com/elastic/elasticsearch/commit/17a21f0272b02365160532580f2ab74e926257f6
+        https://github.com/elastic/elasticsearch/commit/c70b8fbd7b220d078a8cf09de6c2ea5e2386b7d1
+        https://github.com/elastic/elasticsearch/commit/8f1f5d4da0eafd363b277a1e0d9aa78c86e741e3
+        https://github.com/elastic/elasticsearch/commit/f5ac0e507661ec127afa07ed8dd34da50b2e4d5d
+        https://github.com/elastic/elasticsearch/commit/49fd3ff470be1ea51071099c32709519ada4efc3
+location:
+    file: 
+        client/rest/src/main/java/org/elasticsearch/client/RequestLogger.java
+        core/src/main/java/org/elasticsearch/monitor/jvm/JvmInfo.java
+        core/src/main/java/org/elasticsearch/rest/BaseRestHandler.java
+        test/framework/src/main/java/org/elasticsearch/ingest/RandomDocumentPicks.java
+        test/framework/src/main/java/org/elasticsearch/test/hamcrest/ElasticsearchAssertions.java
+    method: 
+        static String buildTraceResponse(HttpResponse httpResponse) throws IOException, static String buildTraceResponse(HttpResponse httpResponse) throws IOException
+        public int versionAsInteger(), public int versionUpdatePack()
+        protected final String unrecognized
+        public static String randomFieldName(Random random)
+        public static String formatShardStatus(BroadcastResponse response), public static String formatShardStatus(SearchResponse response)
+api: 
+    java.lang.String
+api change:
+    java.lang.String.+ -> java.lang.StringBuilder.append
+rule:
+    use a StringBuilder instead of adding strings to concatenate efficiently    

@@ -1,0 +1,25 @@
+source:
+    name: github-search
+project: 
+    name: ADFGVX
+    url: https://github.com/valentindubois/ADFGVX
+fix:
+    tag: performance
+    description: Replacing "+" with StringBuilder improves performance and memory space
+    commit message: >
+            Refactoring getIndicePermutation use StringBuilder instead of String
+    commit: https://github.com/valentindubois/ADFGVX/commit/6c931fe
+induce:
+    commits:
+        https://github.com/valentindubois/ADFGVX/commit/53d75b494131024338f7de9c97d064e97ad9815f
+location:
+    file: 
+        src/main/java/ch/hearc/st/app/Utils.java
+    method: 
+        private static String getIndicePermutation(int[] tab)
+api: 
+    java.lang.String
+api change:
+    java.lang.String.+ -> java.lang.StringBuilder.append
+rule:
+    use a StringBuilder instead of adding strings to concatenate efficiently

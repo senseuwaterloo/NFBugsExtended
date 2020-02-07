@@ -1,0 +1,28 @@
+source:
+    name: github-search
+project: 
+    name: xslt-library
+    url: https://github.com/Offer-Ready/xslt-library
+fix:
+    tag: performance
+    description: Replacing StringBuffer with StringBuilder improves performance because it is not synced
+    commit message: >
+            Impove performance: StringBuilder -> StringBuffer
+    commit: https://github.com/Offer-Ready/xslt-library/commit/12fbf12
+induce:
+    commits:
+        https://github.com/Offer-Ready/xslt-library/commit/68c5b817cd52977cc12c763756eef96d427ac71f
+location:
+    file: 
+        src/main/java/com/offerready/xslt/HtmlBodyExtractor.java
+    method: 
+        protected void extractElements(
+        @Nonnull StringBuilder result, @Nonnull String input,
+        @Nonnull List<Range> ranges,
+        @Nonnull String start, @CheckForNull String endOfStartOrNull, @Nonnull String end)
+api: 
+    java.lang.StringBuffer
+api change:
+    java.lang.StringBuffer -> java.lang.StringBuilder
+rule:
+    if syncying is not required, use a StringBuilder instead of StringBuffer to handle strings efficiently

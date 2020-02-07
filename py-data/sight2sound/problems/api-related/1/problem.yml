@@ -1,0 +1,25 @@
+source:
+    name: github-search
+project: 
+    name: sight2sound
+    url: https://github.com/chenblair/sight2sound
+fix:
+    tag: performance
+    description: Replacing .append loop with list comp improves performance because it does not have to access the instance method
+    commit message: >
+            list comprehension instead of append
+    commit: https://github.com/chenblair/sight2sound/commit/5bba7e2
+induce:
+    commits:
+        https://github.com/chenblair/sight2sound/commit/9fc0f52ebbdb2819f034742df93aa42c6b271e18
+location:
+    file: 
+        main.py
+    method: 
+        main()
+api:
+    builtins.list
+api change: 
+    builtins.list.append -> builtins.list list comprehension
+rule:
+     use list comprehension instead of list.append loops to create lists efficiently

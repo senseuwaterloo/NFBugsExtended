@@ -1,0 +1,26 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: Theano
+    url: https://github.com/Theano/Theano
+fix:
+    tag: performance
+    description: improved performance by using memset instead of nested loop to clear a matrix
+    commit message: >
+            Use memset for initializing memory block to 0 instead of looping over matrix
+            dimensions (resulted in 3x speedup)
+    commit: https://github.com/Theano/Theano/commit/01a46c1
+induce:
+    commits:
+    https://github.com/Theano/Theano/commit/93e4a8d473da28cf2e02632a13c10e4af65c6834
+location:
+    file: 
+        theano/sparse/basic.py
+    method: 
+        c_code(self, node, name, (a_val, a_ind, a_ptr, a_nrows, b), (z,), sub)
+api:
+    builtins.forloop
+api change:
+    builtins.forloop -> ctypes.memset
+rule:
+    clear or initialize memory faster using ctypes.memset

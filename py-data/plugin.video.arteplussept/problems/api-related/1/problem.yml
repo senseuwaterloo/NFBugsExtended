@@ -1,0 +1,25 @@
+source:
+    name: github-search
+project: 
+    name: plugin.video.arteplussept
+    url: https://github.com/known-as-bmf/plugin.video.arteplussept
+fix:
+    tag: performance
+    description: Replacing map(lambda...) with list comp improves performance because it avoids the extra call for each element
+    commit message: >
+            used list comprehension instead of filter() & map()
+    commit: https://github.com/known-as-bmf/plugin.video.arteplussept/commit/e5f545f
+induce:
+    commits:
+        https://github.com/known-as-bmf/plugin.video.arteplussept/commit/4c286a06c6b105bcbfcb9424f4e80a237de466c2
+location:
+    file: 
+        addon.py
+    method: 
+        get_last7days(), def all_videos(), create_item(data)
+api: 
+    builtins.map
+api change:
+    builtins.map -> builtins.list list comprehension
+rule:
+     use list comprehension instead of lambda maps to efficiently create result lists

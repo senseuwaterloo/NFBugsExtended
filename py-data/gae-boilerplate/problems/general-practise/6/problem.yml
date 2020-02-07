@@ -1,0 +1,21 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: gae-boilerplate
+    url: https://github.com/coto/gae-boilerplate
+fix:
+    tag: security
+    description: enhance security by hashing passwords
+    commit message: >
+            Added basic encryption to hashing function, extra security layer for passwords.
+    commit: https://github.com/coto/gae-boilerplate/commit/6743e0c
+induce:
+    commits:
+        https://github.com/coto/gae-boilerplate/commit/45125cd03dca861e018a663519bc013b3902e707
+location:
+    file: 
+        lib/utils.py
+    method: 
+        hashing(plaintext, salt="", sha="512")
+suggestion: 
+    to improve security, use hasing on passwords

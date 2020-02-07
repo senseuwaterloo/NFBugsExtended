@@ -1,0 +1,20 @@
+source:
+    name: github-search
+project: 
+    name: sample-employee-rest-server
+    url: https://github.com/derrikcurran/sample-employee-rest-server
+fix:
+    tag: security
+    description: changed access of id to read-only so no deserialization updates allowed
+    commit message: >
+            Make Employee.id read-only and stop employees from being updated via POST endpoint
+    commit: https://github.com/derrikcurran/sample-employee-rest-server/commit/c17722d
+location:
+    file: 
+        src/main/java/com/derrikcurran/sample/employeerestserver/employee/Employee.java
+    method: 
+        - in public class Employee
+api:
+    com.fasterxml.jackson.annotation.JsonProperty.Access
+rule: 
+    to improve security, prevent unauthorized data changes using READ_ONLY access

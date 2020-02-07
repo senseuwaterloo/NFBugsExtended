@@ -1,0 +1,34 @@
+source:
+    name: github-search
+project: 
+    name: quiz-app
+    url: https://github.com/UdacityAndroidDevScholarship/quiz-app
+fix:
+    tag: memory, performance
+    description: Replacing objects with primitives improves performance and memory usage because these are stored on the stack instead of the heap
+    commit message: >
+            Replaced all wrappers with Primitive data types
+    commit: https://github.com/UdacityAndroidDevScholarship/quiz-app/commit/9a7afb9
+induce:
+    commits:
+        https://github.com/UdacityAndroidDevScholarship/quiz-app/commit/0015870ae5a2fb22f8f47becdaa55abd874f692f
+location:
+    file: 
+        app/src/main/java/com/developervishalsehgal/udacityscholarsapp/data/models/NotificationPrefs.java
+        app/src/main/java/com/developervishalsehgal/udacityscholarsapp/data/models/Option.java
+        app/src/main/java/com/developervishalsehgal/udacityscholarsapp/data/models/Question.java
+        app/src/main/java/com/developervishalsehgal/udacityscholarsapp/data/models/Quiz.java
+        app/src/main/java/com/developervishalsehgal/udacityscholarsapp/data/models/QuizAttempted.java
+        app/src/main/java/com/developervishalsehgal/udacityscholarsapp/data/models/User.java
+    method: 
+        -
+api:
+    java.lang.Long
+    java.lang.Double
+    java.lang.Boolean
+api change:
+    java.lang.Long -> long
+    java.lang.Double -> double
+    java.lang.Boolean -> boolean
+rule:
+    use primitives instead of wrapper classes for performance optimization 

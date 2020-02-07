@@ -1,0 +1,23 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: cocos2d
+    url: https://github.com/ZhouWeikuan/cocos2d
+fix:
+    tag: memory
+    description: added a WeakReference to ensure object can be garbage collected
+    commit message: >
+            fixed memory leaks in CCQuadParticleSystem
+    commit: https://github.com/ZhouWeikuan/cocos2d/commit/da0fe4f
+induce:
+    commits:
+        https://github.com/ZhouWeikuan/cocos2d/commit/2f209f44e0d1bf0db6ab23c1471d2c8daaddba37
+location:
+    file: 
+        cocos2d-android/src/org/cocos2d/particlesystem/CCQuadParticleSystem.java    
+    method: 
+        public CCQuadParticleSystem(int numberOfParticles)
+api: 
+    java.lang.ref.WeakReference
+rule:
+    use WeakReferences to avoid memory leaks

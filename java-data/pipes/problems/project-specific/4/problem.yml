@@ -1,0 +1,26 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: pipes
+    url: https://github.com/tinkerpop/pipes
+fix:
+    tag: memory
+    description: Provided a new class that reduces the running memory space
+    commit message: >
+            GroupByReducePipe makes use of internal ExpandableMultiIterator to ensure a low memory footprint.
+    commit: https://github.com/tinkerpop/pipes/commit/65cd89c
+induce:
+    commits:
+        https://github.com/tinkerpop/pipes/commit/694e344bf23a8d324c402595d963c7ddc94d2e2e
+location:
+    file: 
+        src/main/java/com/tinkerpop/pipes/util/iterators/ExpandableMultiIterator.java
+        src/main/java/com/tinkerpop/pipes/sideeffect/GroupByReducePipe.java
+    method: 
+        public class ExpandableMultiIterator<T> implements Iterator<T>       
+api:
+    java.util.ArrayList
+api change:
+    java.util.ArrayList -> com.tinkerpop.pipes.util.iterators.ExpandableMultiIterator
+rule: 
+    exchange List or ArraysList with ExpandableMultiIterator to make the program more memory efficient 

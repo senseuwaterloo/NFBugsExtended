@@ -1,0 +1,23 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: needle
+    url: https://github.com/python-needle/needle
+fix:
+    tag: performance
+    description: improved efficiency by changing from an instance method to a class method that runs once
+    commit message: >
+            NeedleTestCase: refactor driver setup to setUpClass
+            This saves a considerable amount of time by not loading the driver
+            for every test (50%+ of runtime with 7 tests with Firefox).
+    commit: https://github.com/python-needle/needle/commit/2f138d7
+induce:
+    commits:
+        https://github.com/python-needle/needle/commit/ead144b1cfb6f92b5003125fd4fd0770e696ac9
+location:
+    file: 
+        needle/cases.py
+    method: 
+        setUpClass(cls) in class NeedleTestCase(TestCase)
+rule:
+    avoid loading the driver for each instance

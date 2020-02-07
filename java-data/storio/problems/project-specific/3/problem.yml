@@ -1,0 +1,26 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: storio
+    url: https://github.com/pushtorefresh/storio
+fix:
+    tag: memory
+    description: made sure subscription is released
+    commit message: >
+        Prevent memory leak in TweetsFragment from Sample App
+    commit: https://github.com/pushtorefresh/storio/commit/2367243
+induce:
+    commits:
+        https://github.com/pushtorefresh/storio/commit/03332117a3de6f495d2ca25e401d1eff9aa6fa7e
+location:
+    file: 
+        storio-sample-app/src/main/java/com/pushtorefresh/storio/sample/ui/fragment/TweetsFragment.java
+        storio-sample-app/src/main/java/com/pushtorefresh/storio/sample/ui/fragment/BaseFragment.java
+    method: 
+        void reloadData()
+        protected void unsubscribeOnStop('@NonNull' Subscription subscription), public void onStop() 
+api:
+    rx.subscriptions.CompositeSubscription
+    rx.Subscription;
+rule:
+    remember to unsubscribe Subscriptions

@@ -1,0 +1,25 @@
+source:
+    name: github-search
+project: 
+    name: osmeditor4android
+    url: https://github.com/MarcusWolschon/osmeditor4android
+fix:
+    tag: performance
+    description: Replacing "+" with StringBuilder improves performance and memory space
+    commit message: >
+            Use a StringBuilder instead of concatenating Strings
+    commit: https://github.com/MarcusWolschon/osmeditor4android/commit/74fe7ad
+induce:
+    commits:
+        https://github.com/MarcusWolschon/osmeditor4android/commit/cd3564b57d6af8f1a03afe35427deea2ca0aef64
+location:
+    file: 
+        src/main/java/de/blau/android/tasks/OsmoseBug.java
+    method: 
+        public String getLongDescription
+api: 
+    java.lang.String
+api change:
+    java.lang.String.+ -> java.lang.StringBuilder.append
+rule:
+    use a StringBuilder to concatenate efficiently

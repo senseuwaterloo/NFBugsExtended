@@ -1,0 +1,26 @@
+source:
+    name: github-search
+project: 
+    name: ForestFireModel
+    url: https://github.com/Cashney/ForestFireModel
+fix:
+    tag: performance
+    description: Replacing "+" with StringBuilder improves performance and memory space
+    commit message: >
+            StringBuilder instead of Concatenation (more efficient)
+    commit: https://github.com/Cashney/ForestFireModel/commit/2172f37
+induce:
+    commits:
+        https://github.com/Cashney/ForestFireModel/commit/12509c81b86734680e83226c980aea6a2cf65fad
+        https://github.com/Cashney/ForestFireModel/commit/177edca8041c44f24ccd9e7cd9e2fd099a61525a
+location:
+    file: 
+        src/ForestFireModell/ForestFire_CA.java
+    method: 
+        public void printBoard(long timer) 
+api: 
+    java.lang.String
+api change: 
+    java.lang.String.+ -> java.lang.StringBuilder.append
+rule:
+    use a StringBuilder instead of adding strings to concatenate efficiently
