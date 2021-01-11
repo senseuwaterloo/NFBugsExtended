@@ -2,7 +2,7 @@
 # Extended Non-Functional Bugs Dataset
 
 ## Description
-This repository contains a dataset of real-world bugs related to Non-Functional Requirements, as well as scripts to process the data, focusing on non-functional bugs in Java and Python code. This data was developed in the [Software Maintenance and Reuse lab](https://sarahnadi.org/smr/) at the University of Alberta. We have since contributed to it, by adding a field, mentioning the inducing-commit(s) each of the bugs, when applicable.
+This repository contains a dataset of real-world bugs related to Non-Functional Requirements, as well as scripts to process the data, focusing on non-functional bugs in Java and Python code. This data was developed in the [Software Maintenance and Reuse lab](https://sarahnadi.org/smr/) at the University of Alberta. We have since contributed to it, by adding a field `induce` where the `commits` within, indicate the bug inducing-commit(s) each of the bugs listed, when applicable.
 
 ## Layout of the Dataset 
 
